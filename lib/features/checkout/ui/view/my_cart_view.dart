@@ -10,7 +10,8 @@ class MyCartView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(title: 'My Cart'),
-      body: const MyCartViewBody(),
+      body: Transform.translate(
+          offset: const Offset(0, -16), child: const MyCartViewBody()),
     );
   }
 }

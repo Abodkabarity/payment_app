@@ -28,7 +28,7 @@ class PaymentMethodItem extends StatelessWidget {
           ),
         ],
       ),
-      duration: const Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 300),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,

@@ -3,6 +3,8 @@ import 'package:payment_app/core/style.dart';
 import 'package:payment_app/features/checkout/ui/view/payment_details.dart';
 import 'package:payment_app/features/checkout/ui/view/widgets/cart_info_item.dart';
 import 'package:payment_app/features/checkout/ui/view/widgets/custom_button.dart';
+import 'package:payment_app/features/checkout/ui/view/widgets/payment_method.dart';
+import 'package:payment_app/features/checkout/ui/view/widgets/payment_method_item.dart';
 import 'package:payment_app/features/checkout/ui/view/widgets/total_price_widget.dart';
 
 class MyCartViewBody extends StatelessWidget {
@@ -53,17 +55,43 @@ class MyCartViewBody extends StatelessWidget {
             ),
             CustomButton(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => PaymentDetailsView()));
+                showModalBottomSheet(
+                    context: context,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16)),
+                    builder: (context) => const PaymentMethodsButtonSheet());
               },
+              title: 'Complete Payment',
             ),
             const SizedBox(
               height: 12,
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class PaymentMethodsButtonSheet extends StatelessWidget {
+  const PaymentMethodsButtonSheet({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const SizedBox(
+            height: 16,
+          ),
+          const PaymentMethod(),
+          const SizedBox(
+            height: 32,
+          ),
+          CustomButton(onTap: () {}, title: 'Continue')
+        ],
       ),
     );
   }
